@@ -15,7 +15,7 @@ block content
       dl
       each bike in manufacturer_bikes
         dt
-          a(href=bike.url) #{bike.model} #{bike._id}
+          a(href=bike.url) #{bike.model} #{bike.size} #{bike._id}
         dd #{bike.description}
 
   else

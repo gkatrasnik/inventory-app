@@ -45,7 +45,7 @@ exports.type_detail = function (req, res, next) {
       res.render("type_detail", {
         title: "Type Detail",
         type: results.type,
-        type_books: results.type_books,
+        type_bikes: results.type_bikes,
       });
     }
   );
@@ -145,7 +145,7 @@ exports.type_delete_post = function (req, res, next) {
       type: function (callback) {
         Type.findById(req.params.id).exec(callback);
       },
-      type_books: function (callback) {
+      type_bikes: function (callback) {
         Bike.find({ type: req.params.id }).exec(callback);
       },
     },
@@ -155,7 +155,7 @@ exports.type_delete_post = function (req, res, next) {
       }
       // Success
       if (results.type_bikes.length > 0) {
-        // type has books. Render in same way as for GET route.
+        // type has bikes. Render in same way as for GET route.
         res.render("type_delete", {
           title: "Delete Type",
           type: results.type,
@@ -163,7 +163,7 @@ exports.type_delete_post = function (req, res, next) {
         });
         return;
       } else {
-        // type has no books. Delete object and redirect to the list of types.
+        // type has no bikes. Delete object and redirect to the list of types.
         Type.findByIdAndRemove(req.body.id, function deleteType(err) {
           if (err) {
             return next(err);
@@ -178,7 +178,7 @@ exports.type_delete_post = function (req, res, next) {
 
 // Display type update form on GET.
 exports.type_update_get = function (req, res, next) {
-  Type.findById(req.params.id, function (err, genre) {
+  Type.findById(req.params.id, function (err, type) {
     if (err) {
       return next(err);
     }
@@ -211,6 +211,7 @@ exports.type_update_post = [
     var type = new Type({
       name: req.body.name,
       description: req.body.description,
+      _id: req.params.id,
     });
 
     if (!errors.isEmpty()) {

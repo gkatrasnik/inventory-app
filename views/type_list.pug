@@ -4,11 +4,11 @@ block content
   h1= title
 
   ul
-    each genre in genre_list
+    each type in type_list
       li
-        a(href=genre.url) #{genre.name}
+        a(href=type.url) #{type.name}
         |  
 
     else
-      li There are no genres.
+      li There are no types.
 

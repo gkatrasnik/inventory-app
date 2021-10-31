@@ -2,23 +2,25 @@ extends layout
 
 block content
 
-  h1 Genre: #{genre.name}
+  h1 Type: #{type.name}
 
   div(style='margin-left:20px;margin-top:20px')
 
-    h4 Books
+    p #{type.description}
+
+    h4 Bikes
 
     dl
-      each book in genre_books
+      each bike in type_bikes
         dt
-          a(href=book.url) #{book.title}
-        dd #{book.summary}
+          a(href=bike.url) #{bike.model} 
+          | (#{bike.size})
 
       else
-        p This genre has no books
+        p This type has no bikes
     
     hr
     p
-     a(href=genre.url+'/delete') Delete genre
+     a(href=type.url+'/delete') Delete type
     p
-     a(href=genre.url+'/update') Update genre
+     a(href=type.url+'/update') Update type
