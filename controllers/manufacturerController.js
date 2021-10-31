@@ -1,4 +1,4 @@
-var Manufacturer = require("../models/maufacturer");
+var Manufacturer = require("../models/manufacturer");
 var async = require("async");
 var Bike = require("../models/bike");
 const { body, validationResult } = require("express-validator");

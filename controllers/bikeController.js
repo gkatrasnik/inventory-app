@@ -1,5 +1,5 @@
 var Bike = require("../models/bike");
-var Manufactrurer = require("../models/manufacturer");
+var Manufacturer = require("../models/manufacturer");
 var Type = require("../models/type");
 const { body, validationResult } = require("express-validator");
 var async = require("async");
@@ -14,7 +14,7 @@ exports.index = function (req, res) {
         Manufacturer.countDocuments({}, callback);
       },
       type_count: function (callback) {
-        Type.argumentscountDocuments({}, callback);
+        Type.countDocuments({}, callback);
       },
     },
     function (err, results) {
@@ -218,10 +218,10 @@ exports.bike_delete_get = function (req, res, next) {
   );
 };
 
-// Handle BIke delete on POST.
+// Handle Bike delete on POST.
 exports.bike_delete_post = function (req, res, next) {
   // Assume valid Bike id in field.
-  Bike.findByIdAndRemove(req.body.id, function delete<bikeInstance(err) {
+  Bike.findByIdAndRemove(req.body.id, function delete_bike(err) {
     if (err) {
       return next(err);
     }
@@ -299,7 +299,7 @@ exports.bike_update_post = [
     next();
   },
 
-   // Validate and sanitise fields.
+  // Validate and sanitise fields.
   body("model", "Model must not be empty.")
     .trim()
     .isLength({ min: 1 })
@@ -315,7 +315,6 @@ exports.bike_update_post = [
   body("type.*").escape(),
   body("size").escape(),
   body("price", "Price must not be empty.").isLength({ min: 1 }).escape(),
-
 
   // Process request after validation and sanitization.
   (req, res, next) => {

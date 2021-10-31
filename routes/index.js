@@ -11,29 +11,29 @@ var type_controller = require("../controllers/typeController");
 // GET catalog home page.
 router.get("/", bike_controller.index);
 
-// GET request for creating a Book. NOTE This must come before routes that display Book (uses id).
-router.get("/bike/create", bike_controller.book_create_get);
+// GET request for creating a bike. NOTE This must come before routes that display bike (uses id).
+router.get("/bike/create", bike_controller.bike_create_get);
 
-// POST request for creating Book.
-router.post("/bike/create", bike_controller.book_create_post);
+// POST request for creating bike.
+router.post("/bike/create", bike_controller.bike_create_post);
 
-// GET request to delete Book.
-router.get("/bike/:id/delete", bike_controller.book_delete_get);
+// GET request to delete bike.
+router.get("/bike/:id/delete", bike_controller.bike_delete_get);
 
-// POST request to delete Book.
-router.post("/bike/:id/delete", bike_controller.book_delete_post);
+// POST request to delete bike.
+router.post("/bike/:id/delete", bike_controller.bike_delete_post);
 
-// GET request to update Book.
-router.get("/bike/:id/update", bike_controller.book_update_get);
+// GET request to update bike.
+router.get("/bike/:id/update", bike_controller.bike_update_get);
 
-// POST request to update Book.
-router.post("/bike/:id/update", bike_controller.book_update_post);
+// POST request to update bike.
+router.post("/bike/:id/update", bike_controller.bike_update_post);
 
-// GET request for one Book.
-router.get("/bike/:id", bike_controller.book_detail);
+// GET request for one bike.
+router.get("/bike/:id", bike_controller.bike_detail);
 
-// GET request for list of all Book items.
-router.get("/books", bike_controller.book_list);
+// GET request for list of all bike items.
+router.get("/bikes", bike_controller.bike_list);
 
 /// MANUFACTURER ROUTES ///
 
