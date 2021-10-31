@@ -4,10 +4,10 @@ block content
   h1= title
 
   ul
-    each book in book_list
+    each bike in bike_list
       li
-        a(href=book.url) #{book.title}
-        |  (#{book.author.name})
+        a(href=bike.url) #{bike.title}
+        |  (#{bike.manufacturer.name})
 
     else
-      li There are no books.
+      li There are no bikes.
