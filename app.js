@@ -7,7 +7,12 @@ var logger = require("morgan");
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 
+var compression = require("compression");
+var helmet = require("helmet");
+
 var app = express();
+
+app.use(helmet());
 
 //setting up mongoDB
 var mongoose = require("mongoose");
@@ -21,6 +26,8 @@ db.on("error", console.error.bind(console, "MongoDB connection error:"));
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "pug");
+
+app.use(compression()); //Compress all routes
 
 app.use(logger("dev"));
 app.use(express.json());
