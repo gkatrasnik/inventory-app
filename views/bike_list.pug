@@ -6,8 +6,9 @@ block content
   ul
     each bike in bike_list
       li
-        a(href=bike.url) #{bike.title}
-        |  (#{bike.manufacturer.name})
+        a(href=bike.url) #{bike.model} 
+        | #{bike.manufacturer.name} (#{bike.size})
+        
 
     else
       li There are no bikes.

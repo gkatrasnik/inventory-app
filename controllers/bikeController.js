@@ -29,7 +29,7 @@ exports.index = function (req, res) {
 
 // display list of all bikes
 exports.bike_list = function (req, res, next) {
-  Bike.find({}, "name manufacturer")
+  Bike.find({}, "model manufacturer size")
     .sort({ name: 1 })
     .populate("manufacturer")
     .exec(function (err, list_bikes) {
@@ -50,9 +50,6 @@ exports.bike_detail = function (req, res, next) {
           .populate("manufacturer")
           .populate("type")
           .exec(callback);
-      },
-      bike_instance: function (callback) {
-        BikeInstance.find({ bike: req.params.id }).exec(callback);
       },
     },
     function (err, results) {
@@ -80,7 +77,7 @@ exports.bike_create_get = function (req, res, next) {
   // Get all manufacturers and types, which we can use for adding to our bike.
   async.parallel(
     {
-      manufactrers: function (callback) {
+      manufacturers: function (callback) {
         Manufacturer.find(callback);
       },
       types: function (callback) {
@@ -272,7 +269,7 @@ exports.bike_update_get = function (req, res, next) {
         ) {
           if (
             results.types[all_g_iter]._id.toString() ===
-            results.bike.type[book_g_iter]._id.toString()
+            results.bike.type[bike_g_iter]._id.toString()
           ) {
             results.types[all_g_iter].checked = "true";
           }
@@ -329,6 +326,7 @@ exports.bike_update_post = [
       type: req.body.type,
       size: req.body.size,
       price: req.body.price,
+      _id: req.params.id,
     });
 
     if (!errors.isEmpty()) {

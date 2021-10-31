@@ -6,12 +6,16 @@ var BikeSchema = new Schema({
   model: { type: String, required: true },
   manufacturer: {
     type: Schema.Types.ObjectId,
-    ref: "manufacturer",
+    ref: "Manufacturer",
     required: true,
   },
   description: { type: String, required: true },
-  type: { type: Schema.Types.ObjectId, ref: "type", required: true },
-  size: { type: String, enum: ["xs", "s", "m", "l", "xl"], required: true },
+  type: [{ type: Schema.Types.ObjectId, ref: "Type", required: true }],
+  size: {
+    type: String,
+    enum: ["xxs", "xs", "s", "m", "l", "xl", "xxl"],
+    required: true,
+  },
   price: { type: Number, required: true },
 });
 
