@@ -2,24 +2,26 @@ extends layout
 
 block content
 
-  h1 Author: #{author.name}
-  p #{author.lifespan}
-
+  h1 Manufacturer: #{manufacturer.name}
+  
   div(style='margin-left:20px;margin-top:20px')
 
-    h4 Books
+    p #{manufacturer.description}
+
+    h4 Bikes:   
 
     dl
-      each book in author_books
+      each bike in manufacturer_bikes
         dt
-          a(href=book.url) #{book.title}
-        dd #{book.summary}
+          a(href=bike.url) #{bike.model} 
+          | (#{bike.size})
+        
 
       else
-        p This author has no books.
+        p This manufacturer has no bikes.
     hr
     p
-     a(href=author.url+'/delete') Delete author
+     a(href=manufacturer.url+'/delete') Delete manufacturer
     p
-     a(href=author.url+'/update') Update author
+     a(href=manufacturer.url+'/update') Update manufacturer
 

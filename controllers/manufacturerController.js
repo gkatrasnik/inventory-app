@@ -27,9 +27,7 @@ exports.manufacturer_detail = function (req, res, next) {
         Manufacturer.findById(req.params.id).exec(callback);
       },
       manufacturers_bikes: function (callback) {
-        Bike.find({ author: req.params.id }, "model description").exec(
-          callback
-        );
+        Bike.find({ manufacturer: req.params.id }, "model size").exec(callback);
       },
     },
     function (err, results) {
@@ -111,7 +109,7 @@ exports.manufacturer_delete_get = function (req, res, next) {
         Manufacturer.findById(req.params.id).exec(callback);
       },
       manufacturers_bikes: function (callback) {
-        MManufacturer.find({ manufacturer: req.params.id }).exec(callback);
+        Bike.find({ manufacturer: req.params.id }).exec(callback);
       },
     },
     function (err, results) {
@@ -140,9 +138,7 @@ exports.manufacturer_delete_post = function (req, res, next) {
         Manufacturer.findById(req.body.manufacturerid).exec(callback);
       },
       manufacturers_bikes: function (callback) {
-        Manufacturer.find({ manufacturer: req.body.manufacturerid }).exec(
-          callback
-        );
+        Bike.find({ manufacturer: req.body.manufacturerid }).exec(callback);
       },
     },
     function (err, results) {
@@ -218,6 +214,7 @@ exports.manufacturer_update_post = [
     var manufacturer = new Manufacturer({
       name: req.body.name,
       description: req.body.description,
+      _id: req.params.id,
     });
 
     if (!errors.isEmpty()) {

@@ -4,11 +4,11 @@ block content
   h1= title
 
   ul
-    each author in author_list
+    each manufacturer in manufacturer_list
       li
-        a(href=author.url) #{author.name}
-        |  (#{author.lifespan})
+        a(href=manufacturer.url) #{manufacturer.name}
+        | 
 
     else
-      li There are no authors.
+      li There are no manufacturers.
 
